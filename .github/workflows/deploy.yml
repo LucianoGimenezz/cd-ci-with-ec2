@@ -30,6 +30,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.MY_EC2_SSH_KEY }}
           script: |
+            sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
             sudo docker pull ${{ secrets.DOCKER_REPO_URL }}:node-app
             sudo docker stop node-app-server || true
             sudo docker rm node-app-server || true
